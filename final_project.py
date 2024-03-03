@@ -1,5 +1,6 @@
 import streamlit as st
 import random
+import re
 
 st.title("Bano Qabil 2.0")
 
@@ -9,7 +10,6 @@ st.sidebar.markdown("""
         <img src="https://banoqabil.pk/media/logo.png" width="200">
     </div>
 """, unsafe_allow_html=True)  # Allow HTML rendering in Streamlit
-
 
 # List of scrambled sentences and their corresponding correct answers
 sentences = [
@@ -27,7 +27,7 @@ sentences = [
 
 # Function to scramble the words in a sentence
 def scramble_sentence(sentence):
-    words = sentence.split()
+    words = re.findall(r'\b\w+\b', sentence)  # Using regex to find words
     random.shuffle(words)
     return " ".join(words)
 
