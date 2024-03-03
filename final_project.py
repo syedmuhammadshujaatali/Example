@@ -13,16 +13,16 @@ st.sidebar.markdown("""
 
 # List of scrambled sentences and their corresponding correct answers
 sentences = [
-    ("Q1: What does GB stand for in computing?", "Gigabyte"),
-    ("Q2: When was the first computer invented?", "Various"),
-    ("Q3: What does CPU stand for?", "Central Processing Unit"),
-    ("Q4: What component produces audio output on a computer?", "Speaker"),
-    ("Q5: What is needed to connect to the internet?", "Device"),
-    ("Q6: What does WWW stand for?", "World Wide Web"),
-    ("Q7: What do the initials CD stand for?", "Compact Disc"),
-    ("Q8: Who invented the first mechanical computer?", "Babbage"),
-    ("Q9: What does a Printer do?", "Printing"),
-    ("Q10: What does bit stand for in computing?", "Binary")
+    ("What does GB stand for in computing?", "Gigabyte"),
+    ("When was the first computer invented?", "Various"),
+    ("What does CPU stand for?", "Central Processing Unit"),
+    ("What component produces audio output on a computer?", "Speaker"),
+    ("What is needed to connect to the internet?", "Device"),
+    ("What does WWW stand for?", "World Wide Web"),
+    ("What do the initials CD stand for?", "Compact Disc"),
+    ("Who invented the first mechanical computer?", "Babbage"),
+    ("What does a Printer do?", "Printing"),
+    ("What does bit stand for in computing?", "Binary")
 ]
 
 # Function to scramble the words in a sentence
@@ -60,7 +60,6 @@ def main():
                     st.success("Congratulations! Your answer is correct.")
                 else:
                     st.error("Sorry, your answer is incorrect. Please try again.")
-                    st.info(f"The correct answer is: {correct_answer}")
         else:
             st.warning("No sentences available.")
 
