@@ -38,7 +38,7 @@ def main():
     st.sidebar.title("Navigation")
     tab = st.sidebar.radio("", ["Home", "About us", "Contact us"])
 
- if tab == "Home":
+ if tab = "Home":
         st.title("Puzzle Game")
 
     # Select a random sentence from the list
