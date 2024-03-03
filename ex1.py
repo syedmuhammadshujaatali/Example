@@ -1,41 +1,36 @@
 import streamlit as st
 import random
-import re
 
 st.title("Bano Qabil 2.0")
 
 # Display the Bano Qabil logo
-st.sidebar.markdown("""
-    <div style="display: flex; justify-content: center;">
-        <img src="https://banoqabil.pk/media/logo.png" width="200">
-    </div>
-""", unsafe_allow_html=True)  # Allow HTML rendering in Streamlit
+st.sidebar.image("https://banoqabil.pk/media/logo.png", width=200)
 
-# Dictionary of sentences and their corresponding answers
-sentences = {
-    "What does GB stand for in computing?": "Gigabyte",
-    "When was the first computer invented?": "Various",
-    "What does CPU stand for?": "Central Processing Unit",
-    "What component produces audio output on a computer?": "Speaker",
-    "What is needed to connect to the internet?": "Device",
-    "What does WWW stand for?": "World Wide Web",
-    "What do the initials CD stand for?": "Compact Disc",
-    "Who invented the first mechanical computer?": "Babbage",
-    "What does a Printer do?": "Printing",
-    "What does bit stand for in computing?": "Binary"
-}
+# List of scrambled sentences and their corresponding correct answers
+sentences = [
+    ("What does GB stand for in computing?", "Gigabyte"),
+    ("When was the first computer invented?", "Various"),
+    ("What does CPU stand for?", "Central Processing Unit"),
+    ("What component produces audio output on a computer?", "Speaker"),
+    ("What is needed to connect to the internet?", "Device"),
+    ("What does WWW stand for?", "World Wide Web"),
+    ("What do the initials CD stand for?", "Compact Disc"),
+    ("Who invented the first mechanical computer?", "Babbage"),
+    ("What does a Printer do?", "Printing"),
+    ("What does bit stand for in computing?", "Binary")
+]
 
 # Function to scramble the words in a sentence
 def scramble_sentence(sentence):
-    words = re.findall(r'\b\w+\b', sentence)  # Using regex to find words
+    words = sentence.split()
     random.shuffle(words)
     return " ".join(words)
 
 # Function to check if the user's answer is correct
-def check_answer(sentence, user_answer):
-    correct_answer = sentences.get(sentence)
-    if correct_answer:
-        return user_answer.lower() == correct_answer.lower()
+def check_answer(original_sentence, user_answer):
+    for sentence, correct_answer in sentences:
+        if original_sentence == sentence:
+            return user_answer.lower() == correct_answer.lower()
     return False
 
 def main():
@@ -46,8 +41,8 @@ def main():
         st.title("Puzzle Game")
 
         if sentences:  # Check if there are sentences available
-            # Select a random sentence from the dictionary
-            sentence = random.choice(list(sentences.keys()))
+            # Select a random sentence and its corresponding correct answer from the list
+            sentence, correct_answer = random.choice(sentences)
             scrambled_sentence = scramble_sentence(sentence)
 
             st.write("Unscramble the sentence:")
@@ -60,6 +55,7 @@ def main():
                     st.success("Congratulations! Your answer is correct.")
                 else:
                     st.error("Sorry, your answer is incorrect. Please try again.")
+                    st.info(f"The correct answer is: {correct_answer}")
         else:
             st.warning("No sentences available.")
 
