@@ -27,7 +27,7 @@ sentences = [
 
 # Function to scramble the words in a sentence
 def scramble_sentence(sentence):
-    words = sentence.sequence()
+    words = sentence.split()
     random.shuffle(words)
     return " ".join(words)
 
