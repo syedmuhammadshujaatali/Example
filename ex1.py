@@ -36,7 +36,7 @@ def check_answer(original_sentence, user_answer):
 
 def main():
     st.sidebar.title("Navigation")
-    tab == st.sidebar.radio("", ["Home", "About us", "Contact us"])
+    tab = st.sidebar.radio("", ["Home", "About us", "Contact us"])
 
  if tab == "Home":
         st.title("Puzzle Game")
