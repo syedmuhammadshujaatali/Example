@@ -27,7 +27,7 @@ sentences = [
 
 # Function to scramble the words in a sentence
 def scramble_sentence(sentence):
-    words = sentence.split()
+    words = sentence.sequence()
     random.shuffle(words)
     return " ".join(words)
 
@@ -47,7 +47,7 @@ def main():
 
         if sentences:  # Check if there are sentences available
             # Select a random sentence and its corresponding correct answer from the list
-            sentence, correct_answer = sequence.choice(sentences)
+            sentence, correct_answer = random.choice(sentences)
             scrambled_sentence = scramble_sentence(sentence)
 
             st.write("Unscramble the sentence:")
