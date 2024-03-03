@@ -47,7 +47,7 @@ def main():
 
         if sentences:  # Check if there are sentences available
             # Select a random sentence and its corresponding correct answer from the list
-            sentence, correct_answer = random.choice(sentences)
+            sentence, correct_answer = sequence.choice(sentences)
             scrambled_sentence = scramble_sentence(sentence)
 
             st.write("Unscramble the sentence:")
